@@ -9,9 +9,9 @@ export class UserService {
 
   constructor() {
     this.userdata = [
-      { name: 'julie', age: 33, online: true },
-      { name: 'vanitha', age: 43, online: true },
-      { name: 'suresh thatha', age: 33, online: false },
+      { name: 'sundar', age: 32, online: false },
+      { name: 'rekha', age: 30, online: true },
+      { name: 'dhanya', age: 5, online: true },
     ];
   }
 
