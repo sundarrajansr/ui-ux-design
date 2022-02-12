@@ -1,1 +1,19 @@
-<p>first works!</p>
+<div class="d-flex p-3">  
+    <div class="p-5"><img src="../../assets/285655_user_icon.png" />
+        <p> Welcome Rekha</p></div>
+    <div class="p-5">
+        <table class="table">
+        <tr>
+            <th scope="col">User Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Online</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td scope="row">{{user.name}}</td>
+            <td scope="row">{{user.age}}</td>
+            <td scope="row"><img width="20px" height="18px" [src]="user.online ? 'assets/online.png' : 'assets/offline.jpeg'"/></td>
+        </tr>
+    </table>
+</div>
+    <div class="p-5"></div>
+  </div>
