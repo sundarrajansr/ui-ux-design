@@ -11,9 +11,8 @@
         <tr *ngFor="let user of users">
             <td scope="row">{{user.name}}</td>
             <td scope="row">{{user.age}}</td>
-            <td scope="row"><img width="20px" height="18px" [src]="user.online ? 'assets/online.png' : 'assets/offline.jpeg'"/></td>
+            <td scope="row"><img width="20px" height="20px" [src]="user.online ? 'assets/online.png' : 'assets/offline.jpeg'"/></td>
         </tr>
     </table>
 </div>
-    <div class="p-5"></div>
-  </div>
+    
