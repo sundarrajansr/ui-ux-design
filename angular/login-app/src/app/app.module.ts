@@ -8,13 +8,17 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {CookieService} from 'ngx-cookie-service';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
     SecondComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
