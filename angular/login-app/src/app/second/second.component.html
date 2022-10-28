@@ -1,5 +1,17 @@
-<p> Cookie Value is  {{cookieValue}}</p>
-<button (click)="setCookie()" >Set Cookie</button>
-<button (click)="clearCookie()">Clear Cookie</button>
+<img src="../../assets/285655_user_icon.png" />
+<p> Welcome {{name}}</p>
+
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Age</th>
+        <th>Online</th>
+    </tr>
+    <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.online}}</td>
+    </tr>
+</table>
 
   
