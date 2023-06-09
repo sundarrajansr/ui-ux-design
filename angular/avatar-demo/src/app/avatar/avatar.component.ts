@@ -24,13 +24,11 @@ export class AvatarComponent {
     return (firstInitial + lastInitial).toUpperCase();
   }
 
-  getRandomColor():string {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+
+  getRandomColor() : string {
+    const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
   }
   
 }
