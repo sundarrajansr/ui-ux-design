@@ -1,0 +1,14 @@
+<div [ngClass]="getLevelClass(level)">
+    <ng-container *ngIf="isObject(data)">
+      <div *ngFor="let keyValuePair of data | keyvalue">
+        <ng-container *ngIf="level < 3">
+            <div>{{ keyValuePair.key }}: </div>
+        </ng-container>
+        <ng-container *ngIf="level == 3">
+            <div>{{ keyValuePair.key }}: {{ keyValuePair.value}}</div>
+        </ng-container>
+        <app-recursive-json [data]="keyValuePair.value" [level]="level + 1"></app-recursive-json>
+      </div>
+    </ng-container>
+  </div>
+  

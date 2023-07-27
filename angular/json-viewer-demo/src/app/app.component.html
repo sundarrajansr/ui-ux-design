@@ -1,0 +1,3 @@
+<div *ngFor="let eachData of groceryData | keyvalue">
+  <app-recursive-json [data]="eachData.value" [level]="1"></app-recursive-json>
+</div>

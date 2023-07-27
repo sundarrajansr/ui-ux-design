@@ -1,0 +1,19 @@
+.level1 {
+    padding-left: 20px;
+    border-left: 2px solid blue;
+  }
+  
+  .level2 {
+    padding-left: 40px;
+    border-left: 2px solid green;
+  }
+  
+  .level3 {
+    padding-left: 60px;
+    border-left: 2px solid red;
+  }
+  
+  /* Add border to separate keys in level 3 */
+  .level3 div:not(:last-child) {
+    border-bottom: 1px dashed #ccc;
+  }
