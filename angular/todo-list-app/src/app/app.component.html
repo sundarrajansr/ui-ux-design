@@ -1,0 +1,15 @@
+<div class="main">
+  <app-header></app-header>
+  <h2>What would you like to do today?</h2>
+
+  
+  <select [(ngModel)]="filter">
+    <option *ngFor="let status of filters">{{status}}</option>
+    </select>
+
+
+
+  <ul>
+    <li *ngFor="let item of items">{{item.description}}</li>
+  </ul>
+</div>
