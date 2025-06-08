@@ -12,7 +12,7 @@ A Node.js backend API for managing restaurant table bookings.
 ## Prerequisites
 
 - Node.js (v14 or higher)
-- MongoDB (local or Atlas)
+- Podman (for MongoDB container)
 
 ## Setup
 
@@ -21,14 +21,22 @@ A Node.js backend API for managing restaurant table bookings.
    ```bash
    npm install
    ```
-3. Create a `.env` file in the root directory with the following variables:
+3. Start MongoDB container with Podman:
+   ```bash
+   podman rm -f mongodb || true  # Stop any existing MongoDB container
+   podman run -d --name mongodb --network host \
+     -e MONGO_INITDB_ROOT_USERNAME=root \
+     -e MONGO_INITDB_ROOT_PASSWORD=example \
+     docker.io/mongo:latest
+   ```
+4. Create a `.env` file in the root directory with the following variables:
    ```
    PORT=3000
-   MONGODB_URI=mongodb://localhost:27017/restaurant-booking
+   MONGODB_URI=mongodb://root:example@127.0.0.1:27017/restaurant?authSource=admin&directConnection=true
    ```
-4. Start the server:
+5. Start the server:
    ```bash
-   npm run dev
+   npm start
    ```
 
 ## API Endpoints
