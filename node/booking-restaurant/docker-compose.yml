@@ -4,10 +4,7 @@ services:
   mongodb:
     image: docker.io/mongo:latest
     container_name: restaurant-mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
+    network_mode: host
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
@@ -15,12 +12,11 @@ services:
   app:
     build: .
     container_name: restaurant-app
+    network_mode: host
     ports:
       - "3000:3000"
-    depends_on:
-      - mongodb
     environment:
-      - MONGODB_URI=mongodb://root:example@mongodb:27017/restaurant?authSource=admin
+      - MONGODB_URI=mongodb://root:example@127.0.0.1:27017/restaurant?authSource=admin&directConnection=true
     volumes:
       - .:/app
       - /app/node_modules

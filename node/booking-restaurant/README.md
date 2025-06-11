@@ -10,9 +10,9 @@ A Node.js backend API for managing restaurant table bookings.
 - Cancel bookings
 
 ## Prerequisites
-
+IZDE63G32UWMBTUKTHDZ67PMS6RT4KZ6V2BXPPKJ6XM7DJOQZRN3QI5OA6YWEKCO
 - Node.js (v14 or higher)
-- Podman (for MongoDB container)
+- AWS Account (for MongoDB Atlas)
 
 ## Setup
 
@@ -21,23 +21,36 @@ A Node.js backend API for managing restaurant table bookings.
    ```bash
    npm install
    ```
-3. Start MongoDB container with Podman:
-   ```bash
-   podman rm -f mongodb || true  # Stop any existing MongoDB container
-   podman run -d --name mongodb --network host \
-     -e MONGO_INITDB_ROOT_USERNAME=root \
-     -e MONGO_INITDB_ROOT_PASSWORD=example \
-     docker.io/mongo:latest
-   ```
-4. Create a `.env` file in the root directory with the following variables:
+3. Create a `.env` file in the root directory with your MongoDB Atlas credentials:
    ```
    PORT=3000
-   MONGODB_URI=mongodb://root:example@127.0.0.1:27017/restaurant?authSource=admin&directConnection=true
+   MONGODB_URI=mongodb+srv://your_username:your_password@your-cluster-url/restaurant?retryWrites=true&w=majority
    ```
-5. Start the server:
+4. Start the server:
    ```bash
    npm start
    ```
+
+## Deployment to AWS
+
+1. Create a MongoDB Atlas cluster:
+   - Go to https://www.mongodb.com/cloud/atlas/register
+   - Create a free account
+   - Create a new cluster (M0 free tier)
+   - Get your connection string
+
+2. Create an AWS ECS cluster:
+   - Create an ECS cluster with Fargate
+   - Create a task definition using `task-definition.json`
+   - Create an ECS service
+   - Set up Application Load Balancer
+
+3. Deploy to ECS:
+   - Build and push your Docker image to ECR
+   - Update the task definition with your ECR image URI
+   - Deploy the service
+
+**Note:** Never commit your `.env` file to git. Use `.env.example` as a template.
 
 ## API Endpoints
 
@@ -74,3 +87,10 @@ POST /api/bookings
     "bookingTime": "19:00"
 }
 ``` 
+
+All API endpoints are working correctly:
+
+POST /api/bookings - ✅ Successfully created a booking
+GET /api/bookings - ✅ Successfully retrieved all bookings
+GET /api/bookings/:id - ✅ Successfully retrieved a specific booking
+PATCH /api/bookings/:id/cancel - ✅ Successfully cancelled a booking
